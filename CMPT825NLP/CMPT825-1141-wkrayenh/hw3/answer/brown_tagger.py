@@ -49,34 +49,44 @@ if __name__ == '__main__':
         print "%s:test:%lf" % (method, default_tagger.evaluate(test))
     elif method == 'regexp':
         # regexp tagger
-        default_tag = default_tag(train)
-        default_tagger = nltk.DefaultTagger(default_tag)
-        print "%s:test:%lf" % (method, default_tagger.evaluate(test))
+        patterns = [(r'.*ing$', 'VBG'), # gerunds
+                    (r'.*ed$', 'VBD'), # simple past
+                    (r'.*es$', 'VBZ'), # 3rd singular present
+                    (r'.*ould$', 'MD'), # modals
+                    (r'.*\'s$', 'NN$'), # possessive nouns
+                    (r'.*s$', 'NNS'), # plural nouns
+                    (r'^-?[0-9]+(.[0-9]+)?$', 'CD'), # cardinal numbers
+                    (r'.*', 'NN') # nouns (default)
+                    ]
+        tagger=nltk.RegexpTagger(patterns)
+        print "%s:test:%lf" % (method, tagger.evaluate(test))
     elif method == 'lookup':
         # lookup tagger
-        default_tag = default_tag(train)
-        default_tagger = nltk.DefaultTagger(default_tag)
-        print "%s:test:%lf" % (method, default_tagger.evaluate(test))
+        #COMPLETE THIS!
+        cfd=nltk.ConditionalFreqDist(train)
+        d=[(k,cfd[k].max()) for k in cfd.keys()[:1000]]
+        tagger=nltk.UnigramTagger(model=d)
+        print "%s:test:%lf" % (method, tagger.evaluate(test))
     elif method == 'simple_backoff':
         # simple backoff tagger
-        default_tag = default_tag(train)
-        default_tagger = nltk.DefaultTagger(default_tag)
-        print "%s:test:%lf" % (method, default_tagger.evaluate(test))
+        #COMPLETE THIS!
+        
+        print "%s:test:%lf" % (method, tagger.evaluate(test))
     elif method == 'unigram':
         # unigram backoff tagger
-        default_tag = default_tag(train)
-        default_tagger = nltk.DefaultTagger(default_tag)
-        print "%s:test:%lf" % (method, default_tagger.evaluate(test))
+        #COMPLETE THIS!
+        
+        print "%s:test:%lf" % (method, tagger.evaluate(test))
     elif method == 'bigram':
         # bigram backoff tagger
-        default_tag = default_tag(train)
-        default_tagger = nltk.DefaultTagger(default_tag)
-        print "%s:test:%lf" % (method, default_tagger.evaluate(test))
+        #COMPLETE THIS!
+        
+        print "%s:test:%lf" % (method, tagger.evaluate(test))
     elif method == 'trigram':
         # trigram backoff tagger
-        default_tag = default_tag(train)
-        default_tagger = nltk.DefaultTagger(default_tag)
-        print "%s:test:%lf" % (method, default_tagger.evaluate(test))
+        #COMPLETE THIS!
+        
+        print "%s:test:%lf" % (method, tagger.evaluate(test))
     else:
         print >>sys.stderr, "unknown method"
         sys.exit(2)
