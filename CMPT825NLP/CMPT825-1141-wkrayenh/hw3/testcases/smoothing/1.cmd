@@ -1,0 +1,1 @@
+-i news -o editorial -m add_one

@@ -1,0 +1,1 @@
+-i news -o editorial -m interpolation -l 0.4:0.3:0.3

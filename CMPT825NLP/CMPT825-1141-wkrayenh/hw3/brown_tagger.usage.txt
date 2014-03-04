@@ -1,0 +1,9 @@
+usage: answer/brown_tagger.py -h -i trainsection -o testsection -m method
+
+    -h help
+    -i training section ,e.g. 'news' or 'editorial'
+    -o test section ,e.g. 'news' or 'editorial'
+    -m method, e.g. 'default', 'regexp', 'lookup', 'simple_backoff', 'unigram', 'bigram', 'trigram'
+
+    Do not type in the single quotes at the command line.
+    

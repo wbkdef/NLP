@@ -1,0 +1,11 @@
+usage: answer/smoothing.py -h -i trainsection -o testsection -m method
+
+    -h help
+    -i training section ,e.g. 'news' or 'editorial'
+    -o test section ,e.g. 'news' or 'editorial'
+    -m method, e.g. 'no_smoothing', 'interpolation', 'add_one'
+    -l lambda_vector, e.g. "0.5:0.3:0.2" for values of \lambda_1, \lambda_2 and \lambda_3. 
+        It must have 3 elements and sum to 1.0 (only used for interpolation)
+
+    Do not type in the single quotes at the command line.
+    

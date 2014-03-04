@@ -1,0 +1,4 @@
+lambda vector: [0.4, 0.3, 0.3]
+Wt = 105177 Pt = -457921.939783 cross entropy = 4.35382203127 perplexity = 20.447067
+lambda vector: [0.4, 0.3, 0.3]
+Wt = 7066 Pt = -31647.2728505 cross entropy = 4.47881019679 perplexity = 22.297502
