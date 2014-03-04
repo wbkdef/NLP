@@ -71,7 +71,7 @@ if __name__ == '__main__':
         print "%s:test:%lf" % (method, tagger.evaluate(test))
     elif method == 'lookup':
         # lookup tagger
-        # print_to_file()    
+        print_to_file(str(train))    
         cfd=nltk.ConditionalFreqDist(train)
         print_to_file(cfd)    
         d=[(k,cfd[k].max()) for k in cfd.keys()[:1000]]
