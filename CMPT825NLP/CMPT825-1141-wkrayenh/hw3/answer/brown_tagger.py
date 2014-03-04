@@ -24,9 +24,14 @@ def usage(args):
     """
     sys.exit(2)
 
+def print_to_file(s):
+    with open('brown_output','a') as f:
+        f.write(s) 
+
 if __name__ == '__main__':
     import sys
     import getopt
+
 
     try:
         (trainsection, testsection, method) = ('news', 'editorial', 'default')
@@ -42,10 +47,13 @@ if __name__ == '__main__':
     train = brown.tagged_sents(categories=trainsection)
     test = brown.tagged_sents(categories=testsection)
 
+    print_to_file("\n\nmethod = "+method+"\n")    
+
     if method == 'default':
         # default tagger
         default_tag = default_tag(train)
         default_tagger = nltk.DefaultTagger(default_tag)
+        print_to_file("%s:test:%lf" % (method, default_tagger.evaluate(test)))    
         print "%s:test:%lf" % (method, default_tagger.evaluate(test))
     elif method == 'regexp':
         # regexp tagger
@@ -59,33 +67,44 @@ if __name__ == '__main__':
                     (r'.*', 'NN') # nouns (default)
                     ]
         tagger=nltk.RegexpTagger(patterns)
+        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test)))    
         print "%s:test:%lf" % (method, tagger.evaluate(test))
     elif method == 'lookup':
         # lookup tagger
-        #COMPLETE THIS!
         cfd=nltk.ConditionalFreqDist(train)
         d=[(k,cfd[k].max()) for k in cfd.keys()[:1000]]
         tagger=nltk.UnigramTagger(model=d)
+        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test)))    
         print "%s:test:%lf" % (method, tagger.evaluate(test))
     elif method == 'simple_backoff':
         # simple backoff tagger
         #COMPLETE THIS!
+        default_tag = default_tag(train)
+        default_tagger = nltk.DefaultTagger(default_tag)
+
+        cfd=nltk.ConditionalFreqDist(train)
+        d=[(k,cfd[k].max()) for k in cfd.keys()[:1000]]
+        tagger=nltk.UnigramTagger(model=d,backoff=default_tagger)
         
+        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test)))    
         print "%s:test:%lf" % (method, tagger.evaluate(test))
     elif method == 'unigram':
         # unigram backoff tagger
         #COMPLETE THIS!
         
+        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test)))    
         print "%s:test:%lf" % (method, tagger.evaluate(test))
     elif method == 'bigram':
         # bigram backoff tagger
         #COMPLETE THIS!
         
+        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test)))    
         print "%s:test:%lf" % (method, tagger.evaluate(test))
     elif method == 'trigram':
         # trigram backoff tagger
         #COMPLETE THIS!
         
+        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test)))    
         print "%s:test:%lf" % (method, tagger.evaluate(test))
     else:
         print >>sys.stderr, "unknown method"
