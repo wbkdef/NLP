@@ -32,14 +32,15 @@ if __name__ == '__main__':
     import sys
     import getopt
 
-
     try:
         (trainsection, testsection, method) = ('news', 'editorial', 'default')
         opts, args = getopt.getopt(sys.argv[1:], "hi:o:m:", ["help", "train=", "test=", "method="])
     except getopt.GetoptError:
         usage(sys.argv)
     for o, a in opts:
-        if o in ('-h', '--help'): usage([sys.argv[0]])
+        if o in ('-h', '--help'): 
+            usage([sys.argv[0]])
+            sys.exit(0)
         if o in ('-i', '--train'): trainsection = a
         if o in ('-o', '--test'): testsection = a
         if o in ('-m', '--method'): method = a
@@ -51,11 +52,11 @@ if __name__ == '__main__':
     train_words = brown.words(categories=trainsection)
 
     print_to_file("\n\nmethod = "+method+"\n")    
+    default_tag = default_tag(train_sents)
+    default_tagger = nltk.DefaultTagger(default_tag)
 
     if method == 'default':
         # default tagger
-        default_tag = default_tag(train_sents)
-        default_tagger = nltk.DefaultTagger(default_tag)
         print_to_file("%s:test:%lf" % (method, default_tagger.evaluate(test_sents)))    
         print "%s:test:%lf" % (method, default_tagger.evaluate(test_sents))
     elif method == 'regexp':
@@ -76,18 +77,14 @@ if __name__ == '__main__':
         # lookup tagger
         # print_to_file()    
         fd=nltk.FreqDist(train_words)
-        print fd.keys()[:10]
+        # print fd.keys()[:10]
         cfd=nltk.ConditionalFreqDist(train_tagged_words)
-        d={k:cfd[k].max() for k in fd.keys()[:10]}
+        d={k:cfd[k].max() for k in fd.keys()[:1000]}
         print d
         tagger=nltk.UnigramTagger(model=d)
         print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     elif method == 'simple_backoff':
         # simple backoff tagger
-        #COMPLETE THIS!
-        default_tag = default_tag(train_sents)
-        default_tagger = nltk.DefaultTagger(default_tag)
-
         fd=nltk.FreqDist(train_words)
         cfd=nltk.ConditionalFreqDist(train_tagged_words)
         d={k:cfd[k].max() for k in fd.keys()[:1000]}
@@ -95,8 +92,7 @@ if __name__ == '__main__':
         print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     elif method == 'unigram':
         # unigram backoff tagger
-        #COMPLETE THIS!
-        
+        tagger=nltk.UnigramTagger(train_tagged_sents,backoff=default_tagger)
         print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_sents)))    
         print "%s:test:%lf" % (method, tagger.evaluate(test_sents))
     elif method == 'bigram':
