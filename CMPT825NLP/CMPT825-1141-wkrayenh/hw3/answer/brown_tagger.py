@@ -66,7 +66,16 @@ if __name__ == '__main__':
         print "%s:test:%lf" % (method, default_tagger.evaluate(test_tagged_sents))
     elif method == 'regexp':
         # regexp tagger
-        patterns = [(r'.*ing$', 'VBG'), # gerunds
+        patterns = [
+                    (r'',''),
+                    (r'',''),
+                    (r'',''),
+                    (r'',''),
+                    (r'',''),
+                    (r'',''),
+                    (r'',''),
+                    (r'',''),
+                    (r'.*ing$', 'VBG'), # gerunds
                     (r'.*ed$', 'VBD'), # simple past
                     (r'.*es$', 'VBZ'), # 3rd singular present
                     (r'.*ould$', 'MD'), # modals
@@ -82,6 +91,7 @@ if __name__ == '__main__':
 
         print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents)))    
         print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
+
     elif method == 'lookup':
         # lookup tagger
         fd=nltk.FreqDist(train_words)
@@ -89,6 +99,7 @@ if __name__ == '__main__':
         d={k:cfd[k].max() for k in fd.keys()[:1000]}
         tagger=nltk.UnigramTagger(model=d)
         print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
+    
     elif method == 'simple_backoff':
         # simple backoff tagger
         fd=nltk.FreqDist(train_words)
