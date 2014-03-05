@@ -76,6 +76,10 @@ if __name__ == '__main__':
                     (r'.*', 'NN') # nouns (default)
                     ]
         tagger=nltk.RegexpTagger(patterns)
+        print "tagged words"
+        print tagger.tag(train_words[:10])
+        print train_tagged_words[:10]
+
         print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents)))    
         print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     elif method == 'lookup':
