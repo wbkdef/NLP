@@ -94,14 +94,12 @@ if __name__ == '__main__':
         print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     elif method == 'bigram':
         # bigram backoff tagger
-        #COMPLETE THIS!
-        
+        tagger=nltk.BigramTagger(train_tagged_sents,backoff=default_tagger)
         print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents)))    
         print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     elif method == 'trigram':
         # trigram backoff tagger
-        #COMPLETE THIS!
-        
+        tagger=nltk.TrigramTagger(train_tagged_sents,backoff=default_tagger)
         print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents)))    
         print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     else:
