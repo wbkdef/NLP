@@ -55,6 +55,11 @@ if __name__ == '__main__':
     default_tag = default_tag(train_tagged_sents)
     default_tagger = nltk.DefaultTagger(default_tag)
 
+    if method in ['unigram','bigram','trigram']:
+        tu=nltk.UnigramTagger(train_tagged_sents,backoff=default_tagger)
+        tb=nltk.BigramTagger(train_tagged_sents,backoff=tu)
+        tt=nltk.TrigramTagger(train_tagged_sents,backoff=tb)
+
     if method == 'default':
         # default tagger
         print_to_file("%s:test:%lf" % (method, default_tagger.evaluate(test_tagged_sents)))    
@@ -89,18 +94,15 @@ if __name__ == '__main__':
         print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     elif method == 'unigram':
         # unigram backoff tagger
-        tagger=nltk.UnigramTagger(train_tagged_sents,backoff=default_tagger)
-        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents)))    
+        tagger=tu
         print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     elif method == 'bigram':
         # bigram backoff tagger
-        tagger=nltk.BigramTagger(train_tagged_sents,backoff=default_tagger)
-        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents)))    
+        tagger=tb
         print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     elif method == 'trigram':
         # trigram backoff tagger
-        tagger=nltk.TrigramTagger(train_tagged_sents,backoff=default_tagger)
-        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents)))    
+        tagger=tt
         print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     else:
         print >>sys.stderr, "unknown method"
