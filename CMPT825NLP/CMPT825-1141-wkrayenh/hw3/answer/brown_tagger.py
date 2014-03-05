@@ -44,10 +44,11 @@ if __name__ == '__main__':
         if o in ('-o', '--test'): testsection = a
         if o in ('-m', '--method'): method = a
 
-    train_sents = brown.tagged_sents(categories=trainsection)
-    test_sents = brown.tagged_sents(categories=testsection)
-    train_words = brown.tagged_words(categories=trainsection)
-    test_words = brown.tagged_words(categories=testsection)
+    train_tagged_sents = brown.tagged_sents(categories=trainsection)
+    test_tagged_sents = brown.tagged_sents(categories=testsection)
+    train_tagged_words = brown.tagged_words(categories=trainsection)
+    test_tagged_words = brown.tagged_words(categories=testsection)
+    train_words = brown.words(categories=trainsection)
 
     print_to_file("\n\nmethod = "+method+"\n")    
 
@@ -73,28 +74,25 @@ if __name__ == '__main__':
         print "%s:test:%lf" % (method, tagger.evaluate(test_sents))
     elif method == 'lookup':
         # lookup tagger
-        print_to_file(str(train))    
-        cfd=nltk.ConditionalFreqDist(train)
-        print_to_file(cfd)    
-        d=[(k,cfd[k].max()) for k in cfd.keys()[:1000]]
-        print_to_file(d)    
+        # print_to_file()    
+        fd=nltk.FreqDist(train_words)
+        print fd.keys()[:10]
+        cfd=nltk.ConditionalFreqDist(train_tagged_words)
+        d={k:cfd[k].max() for k in fd.keys()[:10]}
+        print d
         tagger=nltk.UnigramTagger(model=d)
-        print_to_file(tagger)    
-        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_sents)))    
-        print "%s:test:%lf" % (method, tagger.evaluate(test_sents))
+        print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     elif method == 'simple_backoff':
         # simple backoff tagger
         #COMPLETE THIS!
         default_tag = default_tag(train_sents)
         default_tagger = nltk.DefaultTagger(default_tag)
 
-        cfd=nltk.ConditionalFreqDist(train_words)
-        print_to_file(cfd)
-        d=[(k,cfd[k].max()) for k in cfd.keys()[:1000]]
+        fd=nltk.FreqDist(train_words)
+        cfd=nltk.ConditionalFreqDist(train_tagged_words)
+        d={k:cfd[k].max() for k in fd.keys()[:1000]}
         tagger=nltk.UnigramTagger(model=d,backoff=default_tagger)
-        
-        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_sents)))    
-        print "%s:test:%lf" % (method, tagger.evaluate(test_sents))
+        print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     elif method == 'unigram':
         # unigram backoff tagger
         #COMPLETE THIS!
