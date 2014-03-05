@@ -74,13 +74,10 @@ if __name__ == '__main__':
     elif method == 'lookup':
         # lookup tagger
         # print_to_file()    
+        fd=nltk.FreqDist(train_words)
         cfd=nltk.ConditionalFreqDist(train_words)
-        print_to_file(cfd)
-        d=[(k,cfd[k].max()) for k in cfd.keys()[:1000]]
-        print_to_file(d)    
+        d=[(k,cfd[k].max()) for k in fd.keys()[:1000]]
         tagger=nltk.UnigramTagger(model=d)
-        print_to_file(tagger)    
-        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_sents)))    
         print "%s:test:%lf" % (method, tagger.evaluate(test_sents))
     elif method == 'simple_backoff':
         # simple backoff tagger
@@ -88,12 +85,10 @@ if __name__ == '__main__':
         default_tag = default_tag(train_sents)
         default_tagger = nltk.DefaultTagger(default_tag)
 
+        fd=nltk.FreqDist(train_words)
         cfd=nltk.ConditionalFreqDist(train_words)
-        print_to_file(cfd)
-        d=[(k,cfd[k].max()) for k in cfd.keys()[:1000]]
+        d=[(k,cfd[k].max()) for k in fd.keys()[:1000]]
         tagger=nltk.UnigramTagger(model=d,backoff=default_tagger)
-        
-        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_sents)))    
         print "%s:test:%lf" % (method, tagger.evaluate(test_sents))
     elif method == 'unigram':
         # unigram backoff tagger
