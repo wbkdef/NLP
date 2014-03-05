@@ -76,3 +76,19 @@ method = lookup
 
 
 method = default
+
+
+method = lookup
+
+
+method = lookup
+
+
+method = simple_backoff
+
+
+method = unigram
+
+
+method = unigram
+unigram:test:0.934901

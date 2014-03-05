@@ -52,13 +52,13 @@ if __name__ == '__main__':
     train_words = brown.words(categories=trainsection)
 
     print_to_file("\n\nmethod = "+method+"\n")    
-    default_tag = default_tag(train_sents)
+    default_tag = default_tag(train_tagged_sents)
     default_tagger = nltk.DefaultTagger(default_tag)
 
     if method == 'default':
         # default tagger
-        print_to_file("%s:test:%lf" % (method, default_tagger.evaluate(test_sents)))    
-        print "%s:test:%lf" % (method, default_tagger.evaluate(test_sents))
+        print_to_file("%s:test:%lf" % (method, default_tagger.evaluate(test_tagged_sents)))    
+        print "%s:test:%lf" % (method, default_tagger.evaluate(test_tagged_sents))
     elif method == 'regexp':
         # regexp tagger
         patterns = [(r'.*ing$', 'VBG'), # gerunds
@@ -71,16 +71,13 @@ if __name__ == '__main__':
                     (r'.*', 'NN') # nouns (default)
                     ]
         tagger=nltk.RegexpTagger(patterns)
-        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_sents)))    
-        print "%s:test:%lf" % (method, tagger.evaluate(test_sents))
+        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents)))    
+        print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     elif method == 'lookup':
         # lookup tagger
-        # print_to_file()    
         fd=nltk.FreqDist(train_words)
-        # print fd.keys()[:10]
         cfd=nltk.ConditionalFreqDist(train_tagged_words)
         d={k:cfd[k].max() for k in fd.keys()[:1000]}
-        print d
         tagger=nltk.UnigramTagger(model=d)
         print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     elif method == 'simple_backoff':
@@ -93,20 +90,20 @@ if __name__ == '__main__':
     elif method == 'unigram':
         # unigram backoff tagger
         tagger=nltk.UnigramTagger(train_tagged_sents,backoff=default_tagger)
-        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_sents)))    
-        print "%s:test:%lf" % (method, tagger.evaluate(test_sents))
+        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents)))    
+        print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     elif method == 'bigram':
         # bigram backoff tagger
         #COMPLETE THIS!
         
-        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_sents)))    
-        print "%s:test:%lf" % (method, tagger.evaluate(test_sents))
+        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents)))    
+        print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     elif method == 'trigram':
         # trigram backoff tagger
         #COMPLETE THIS!
         
-        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_sents)))    
-        print "%s:test:%lf" % (method, tagger.evaluate(test_sents))
+        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents)))    
+        print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     else:
         print >>sys.stderr, "unknown method"
         sys.exit(2)
