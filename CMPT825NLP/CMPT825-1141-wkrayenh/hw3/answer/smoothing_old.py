@@ -73,32 +73,30 @@ def usage(args):
     sys.exit(2)
 
 if __name__ == '__main__':
-    SETUP=True
-    if SETUP:
-        import sys 
-        import getopt
+    import sys 
+    import getopt
 
-        try:
-            (trainsection, testsection, method, lambda_vector) = ('news', 'editorial', 'default', [0.5,0.3,0.2])
-            opts, args = getopt.getopt(sys.argv[1:], "hi:o:m:l:", ["help", "train=", "test=", "method=", "lambda_vector="])
-        except getopt.GetoptError:
-            usage(sys.argv)
-        for o, a in opts:
-            if o in ('-h', '--help'): usage([sys.argv[0]])
-            if o in ('-i', '--train'): trainsection = a 
-            if o in ('-o', '--test'): testsection = a 
-            if o in ('-m', '--method'): method = a 
-            if o in ('-l', '--lambda'): lambda_vector = map(float,a.split(':'))
+    try:
+        (trainsection, testsection, method, lambda_vector) = ('news', 'editorial', 'default', [0.5,0.3,0.2])
+        opts, args = getopt.getopt(sys.argv[1:], "hi:o:m:l:", ["help", "train=", "test=", "method=", "lambda_vector="])
+    except getopt.GetoptError:
+        usage(sys.argv)
+    for o, a in opts:
+        if o in ('-h', '--help'): usage([sys.argv[0]])
+        if o in ('-i', '--train'): trainsection = a 
+        if o in ('-o', '--test'): testsection = a 
+        if o in ('-m', '--method'): method = a 
+        if o in ('-l', '--lambda'): lambda_vector = map(float,a.split(':'))
 
-        if len(lambda_vector) < 3:
-            print >>sys.stderr, "error: lambda vector should have three elements"
-            sys.exit(2)
-        if sum(lambda_vector) != 1.0:
-            print >>sys.stderr, "error: lambda vector should sum to one"
-            sys.exit(2)
-        train = brown.tagged_sents(categories=trainsection)
-        test = islice(brown.tagged_sents(categories=testsection), 300)
-        #test = brown.tagged_sents(categories=testsection)
+    if len(lambda_vector) < 3:
+        print >>sys.stderr, "error: lambda vector should have three elements"
+        sys.exit(2)
+    if sum(lambda_vector) != 1.0:
+        print >>sys.stderr, "error: lambda vector should sum to one"
+        sys.exit(2)
+    train = brown.tagged_sents(categories=trainsection)
+    test = islice(brown.tagged_sents(categories=testsection), 300)
+    #test = brown.tagged_sents(categories=testsection)
 
     bigramFreq = do_train(train)
 
@@ -113,6 +111,7 @@ if __name__ == '__main__':
         print "%s:%s:%s" % (method, 'train', compute_perplexity(bigram, train))
         print "%s:%s:%s" % (method, 'test', compute_perplexity(bigram, test))
     elif method == 'add_one':
+    	bigram = ConditionalProbDist(bigramFreq, LaplaceProbDist)
         print "%s:%s:%s" % (method, 'train', compute_perplexity(bigram, train))
         print "%s:%s:%s" % (method, 'test', compute_perplexity(bigram, test))
     elif method == 'interpolation_add_one':
