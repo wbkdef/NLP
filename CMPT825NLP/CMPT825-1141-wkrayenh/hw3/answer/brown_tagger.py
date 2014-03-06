@@ -60,21 +60,36 @@ if __name__ == '__main__':
         tb=nltk.BigramTagger(train_tagged_sents,backoff=tu)
         tt=nltk.TrigramTagger(train_tagged_sents,backoff=tb)
 
-    if method == 'default':
-        # default tagger
-        print_to_file("%s:test:%lf" % (method, default_tagger.evaluate(test_tagged_sents)))    
-        print "%s:test:%lf" % (method, default_tagger.evaluate(test_tagged_sents))
-    elif method == 'regexp':
-        # regexp tagger
-        patterns = [
-                    (r'',''),
-                    (r'',''),
-                    (r'',''),
-                    (r'',''),
-                    (r'',''),
-                    (r'',''),
-                    (r'',''),
-                    (r'',''),
+    fd=nltk.FreqDist(train_words)
+    cfd=nltk.ConditionalFreqDist(train_tagged_words)
+    d={k:cfd[k].max() for k in fd.keys()[:1000]}
+    
+    patterns = [
+                    (r'^the$','AT'),
+                    (r'^,$',','),
+                    (r'^\.$','.'),
+                    (r'^of$','IN'),
+                    (r'^and$','CC'),
+                    (r'^to$','TO'),
+                    (r'^a$','AT'),
+                    (r'^in$','IN'),
+                    (r'^that$','CS'),
+                    (r'^is$','BEZ'),
+                    (r'^was$','BEDZ'),
+                    (r'^for$','IN'),
+                    (r'^``$','``'),
+                    (r"^''$","''"),
+                    (r'^The$','AT'),
+                    (r'^with$','IN'),
+                    (r'^it$','PPS'),
+                    (r'^as$','CS'),
+                    (r'^he$','PPS'),
+                    (r'^his$','PP$'),
+                    (r'^on$','IN'),
+                    (r'^be$','BE'),
+                    (r'^;$','.'),
+                    (r'^I$','PPSS'),
+                    (r'^by$','IN'),
                     (r'.*ing$', 'VBG'), # gerunds
                     (r'.*ed$', 'VBD'), # simple past
                     (r'.*es$', 'VBZ'), # 3rd singular present
@@ -84,28 +99,33 @@ if __name__ == '__main__':
                     (r'^-?[0-9]+(.[0-9]+)?$', 'CD'), # cardinal numbers
                     (r'.*', 'NN') # nouns (default)
                     ]
-        tagger=nltk.RegexpTagger(patterns)
-        print "tagged words"
-        print tagger.tag(train_words[:10])
-        print train_tagged_words[:10]
+    if method == 'default':
+        # default tagger
+        print_to_file("%s:test:%lf" % (method, default_tagger.evaluate(test_tagged_sents)))    
+        print "%s:test:%lf" % (method, default_tagger.evaluate(test_tagged_sents))
 
-        print_to_file("%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents)))    
+    elif method == 'regexp':
+        # regexp tagger
+        tagger=nltk.RegexpTagger(patterns)
+#        words=nltk.corpus.brown.words()
+#        fd=nltk.FreqDist(words)
+#        print fd.keys()[:25]
+#        cfd=nltk.ConditionalFreqDist(train_tagged_words)
+#        print "from FreqDist"
+#        for w in fd.keys()[:25]:
+#            print "(r'^{}$','{}'),".format(w,cfd[w].max())
+#
         print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
 
     elif method == 'lookup':
         # lookup tagger
-        fd=nltk.FreqDist(train_words)
-        cfd=nltk.ConditionalFreqDist(train_tagged_words)
-        d={k:cfd[k].max() for k in fd.keys()[:1000]}
         tagger=nltk.UnigramTagger(model=d)
         print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     
     elif method == 'simple_backoff':
         # simple backoff tagger
-        fd=nltk.FreqDist(train_words)
-        cfd=nltk.ConditionalFreqDist(train_tagged_words)
-        d={k:cfd[k].max() for k in fd.keys()[:1000]}
-        tagger=nltk.UnigramTagger(model=d,backoff=default_tagger)
+        reg_exp_tagger=nltk.RegexpTagger(patterns,backoff=default_tagger)
+        tagger=nltk.UnigramTagger(model=d,backoff=reg_exp_tagger)
         print "%s:test:%lf" % (method, tagger.evaluate(test_tagged_sents))
     elif method == 'unigram':
         # unigram backoff tagger
