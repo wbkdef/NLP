@@ -1,0 +1,10 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "C:\\Users\\Willem\\SkyDrive\\Documents\\School\\SFU\\CMPT 825\\NLP\\CMPT825NLP\\CMPT825-1141-wkrayenh\\hw3\\answer",
+			"file_exclude_patterns": ["brown_output",".nfs*"]
+		}
+	]
+}
