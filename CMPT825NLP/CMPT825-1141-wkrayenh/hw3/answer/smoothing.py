@@ -56,6 +56,32 @@ def compute_perplexity(bigramProb, tagged_sents):
     print >>sys.stderr, "Wt =", Wt, "Pt =", logsum(Pt), "cross entropy =",  H, "perplexity =", perplexity(H)
     return perplexity(H)
 
+def compute_perplexity_interpolated(bigramProb, unigramProb, uniformProb,lambda_vector,tagged_sents):
+    Wt = 0
+    Pt = []
+    p = [(None, None)] # empty token/tag pair 
+    biLambda,unigLambda,unifLambda=lambda_vector
+    def log2_prob(prob):
+        if prob > 0.0:
+                logprobBi = log2(prob)
+            else:
+                logprobBi = _NINF
+    for sent in tagged_sents:
+        bigrams = zip(p+sent, sent+p)
+        for (a,b) in bigrams:
+            Wt += 1
+            history = a[1]
+            current_tag = b[1]
+            probBi = bigramProb[history].prob(current_tag)
+            probUnig= unigramProb.prob(current_tag)
+            probUnif=uniformProb
+            prob=probBi*biLambda+probUnig*unigLambda+probUnif*unifLambda
+            logprob=log2_prob(prob)
+            Pt.append(logprob)
+    H = crossEntropy(Wt, logsum(Pt))
+    print >>sys.stderr, "Wt =", Wt, "Pt =", logsum(Pt), "cross entropy =",  H, "perplexity =", perplexity(H)
+    return perplexity(H)
+
 def usage(args):
     if len(args) > 1:
         print >>sys.stderr, "unknown args", args[1:]
@@ -71,6 +97,14 @@ def usage(args):
     Do not type in the single quotes at the command line.
     """
     sys.exit(2)
+
+class probDist(probDistI):
+    def __init__(self,*probDists):
+        self.pd={}
+        keys=set()
+        for pd in probDists:
+            keys|=set(pd.)
+        for key in keys
 
 if __name__ == '__main__':
     SETUP=True
@@ -101,18 +135,27 @@ if __name__ == '__main__':
         #test = brown.tagged_sents(categories=testsection)
 
     bigramFreq = do_train(train)
+    num_tags=len(bigramFreq.conditions())
 
     # use the maximum likelihood estimate MLEProbDist to create 
     # a probability distribution from the observed frequencies
-    bigram = ConditionalProbDist(bigramFreq, MLEProbDist) 
 
     if method == 'no_smoothing':
+        bigram = ConditionalProbDist(bigramFreq, MLEProbDist) 
         print "%s:%s:%s" % (method, 'train', compute_perplexity(bigram, train))
         print "%s:%s:%s" % (method, 'test', compute_perplexity(bigram, test))
     elif method == 'interpolation':
-        print "%s:%s:%s" % (method, 'train', compute_perplexity(bigram, train))
-        print "%s:%s:%s" % (method, 'test', compute_perplexity(bigram, test))
+        bigram = ConditionalProbDist(bigramFreq, MLEProbDist)
+        train_words_tags = brown.tagged_words(categories=trainsection)
+        unigramFreq = FreqDist((x[1] for x in train_words_tags))
+        unigram = MLEProbDist(unigramFreq)
+        nogram=1/(V+1)
+        p_train=compute_perplexity_interpolated(bigram, unigram, nogram,lambda_vector,train)
+        print "%s:%s:%s" % (method, 'train', p_train)
+        p_test=compute_perplexity_interpolated(bigram, unigram, nogram,lambda_vector,test)
+        print "%s:%s:%s" % (method, 'test', p_test)
     elif method == 'add_one':
+        bigram = ConditionalProbDist(bigramFreq, LaplaceProbDist,num_tags)
         print "%s:%s:%s" % (method, 'train', compute_perplexity(bigram, train))
         print "%s:%s:%s" % (method, 'test', compute_perplexity(bigram, test))
     elif method == 'interpolation_add_one':

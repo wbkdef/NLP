@@ -1,0 +1,775 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"dic",
+				"dict_params"
+			],
+			[
+				"ss",
+				"ss_params"
+			],
+			[
+				"dr",
+				"dropout_rate"
+			],
+			[
+				"clas",
+				"classifier"
+			],
+			[
+				"Co",
+				"Copy"
+			],
+			[
+				"s",
+				"scores"
+			],
+			[
+				"csr",
+				"csr_matrix"
+			],
+			[
+				"ra",
+				"random"
+			],
+			[
+				"num_f",
+				"num_failed_samples"
+			],
+			[
+				"Come",
+				"comment"
+			],
+			[
+				"max",
+				"max_examples"
+			],
+			[
+				"ver",
+				"verbosity"
+			],
+			[
+				"a",
+				"array"
+			],
+			[
+				"prin",
+				"print_stuff"
+			],
+			[
+				"v",
+				"verbose"
+			],
+			[
+				"as",
+				"assert"
+			],
+			[
+				"l_",
+				"l_old"
+			],
+			[
+				"an",
+				"and"
+			],
+			[
+				"su",
+				"sublime"
+			],
+			[
+				"au",
+				"auto-complete"
+			],
+			[
+				"th",
+				"this"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "smoothing.py",
+			"settings":
+			{
+				"buffer_size": 6250,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Willem/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 868,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 150.0,
+		"selected_items":
+		[
+			[
+				"min",
+				"View: Toggle Minimap"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"packin",
+				"Package Control: Install Package"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				":W",
+				":w - Save"
+			],
+			[
+				":q",
+				"Set Syntax: SQL"
+			],
+			[
+				"save",
+				"Project: Save As"
+			],
+			[
+				"Add",
+				"Project: Add Folder"
+			]
+		],
+		"width": 536.0
+	},
+	"console":
+	{
+		"height": 160.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/CMPT 825/NLP/CMPT825NLP/CMPT825-1141-wkrayenh/hw3/project",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/CMPT 825/NLP/CMPT825NLP/CMPT825-1141-wkrayenh/hw3/answer/smoothing.py",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/CMPT 825/NLP/.gitignore",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/CMPT 825/NLP/CMPT825NLP/CMPT825-1141-wkrayenh/hw3/answer/project",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/Research/Kiri/run_perceptron_2014_02_16.py",
+		"/C/Users/Willem/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Willem/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Willem/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/Research/Kiri/classifier.py",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/Research/Kiri/project1.sublime-project",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/Research/Kiri/README.md",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/Research/Kiri/Thumbs.db",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/Research/Kiri/03-01_10,52_per_drs_UPTOdr0.9_per1_rfF_na2000_dr0.9_nc2_mlf0.95.png",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/Research/Kiri/03-01_10,49_per_drs_UPTOdr0.3_per1_rfF_na2000_dr0.3_nc2_mlf0.95.png",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/Research/Kiri/misc.py",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/Research/Kiri/semi_supervised_learner.py",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/Research/Kiri/runMe_2014_01_20_BK.py",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/Research/Kiri/Yarowsky.py",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/Research/Kiri/data/namedentity/view1",
+		"/C/Users/Willem/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/Research/Kiri/data/namedentity/gold",
+		"/C/Users/Willem/SkyDrive/Documents/Tutoring/z_General/Session Recordings/2014Sp/Noam/Cellular_Automata_with_sets.py",
+		"/C/Users/Willem/SkyDrive/Documents/Tutoring/z_General/Session Recordings/2014Sp/Noam/Bruces_cellular_automata.py",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/Research/Kiri/data_manager.py",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/Research/Kiri/runMe_kiri_2013-12-13.py",
+		"/C/Users/Willem/SkyDrive/Documents/School/SFU/Research/Kiri/DL.py",
+		"/C/Users/Willem/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/Willem/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Willem/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Willem/Desktop/ANSWER KEY.py",
+		"/C/Users/Willem/SkyDrive/Documents/Tutoring/z_General/Session Recordings/2014Sp/Noam/for_loops.py",
+		"/C/Users/Willem/SkyDrive/Documents/Tutoring/z_General/Session Recordings/2014Sp/Noam/cellularautomata2.py"
+	],
+	"find":
+	{
+		"height": 30.0
+	},
+	"find_in_files":
+	{
+		"height": 102.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"train",
+			"uniLambda",
+			"2_prob(",
+			"log",
+			"bigramProb[history].prob(current_tag)",
+			"logprob",
+			"train",
+			"\\",
+			"unbound",
+			"__reset_perceptron__",
+			"bool_remove_features",
+			"self.bool_remove_features",
+			"short_description",
+			"label_counts",
+			"record_results",
+			"results",
+			"Results",
+			"results",
+			"set_test_set_Classifier_DropoutRate_Bundles",
+			"dict_test_set_Classifier_DropoutRate_Bundles",
+			"get_error",
+			"num_labels_tot",
+			"num_labels_added",
+			"num_labels_orig",
+			"__reset_perceptron__",
+			"False",
+			"false",
+			"pickle",
+			"shutil",
+			"filename",
+			"__reset_lr__",
+			"run_then_graph_semi_supervised_learning",
+			"dict_diff_from_defaults",
+			"assert(false)",
+			"file_name_base",
+			"=",
+			",",
+			"dict_test_set_Classifier_DropoutRate_Bundles",
+			"lr_drs",
+			"self.random_drop_out_rate",
+			"get_dr",
+			"self.classifier",
+			"Jump",
+			"Select",
+			"som",
+			"Classifier",
+			"classifier",
+			"=",
+			",",
+			"=",
+			"self.percep",
+			"=",
+			"__reset_perceptron__",
+			"\"average",
+			"confidence",
+			"label",
+			"_p",
+			"runtype",
+			"fi",
+			"gr",
+			"fin",
+			"fi",
+			"soNnki",
+			"so",
+			"current",
+			"all",
+			"qu",
+			"Quick",
+			"qu",
+			"qui",
+			"find",
+			"Find something, then find the next and next one….  Then click somewhere, then start finding the next one again…  Then start finding the previous one again\n2	Do a find to move somewhere, then use arrow keys to get exactly where you want to be\n9	Shift",
+			"find",
+			"Quick",
+			"Fin",
+			"rand",
+			"randint",
+			"num_labels",
+			"rand_seed",
+			"rand",
+			"rand_seed",
+			"ha",
+			"ma",
+			"fea",
+			"un",
+			"Non",
+			"rand",
+			"ran",
+			"26",
+			"all",
+			"feats",
+			"the",
+			"something",
+			"several",
+			"occurrences",
+			"select",
+			"Select",
+			"several",
+			"eli",
+			"el",
+			"several",
+			"warm_start",
+			"pr",
+			"~n",
+			"predict confidences",
+			"			# results=cProfile.runctx(\"ssl.do_semi_supervised_learning()\",globals(),locals())\nGoing to predict confidences",
+			"mlf",
+			"perceptron_drs",
+			"Going to predict confidences",
+			"lts Recorded Going to predict confidences",
+			"Star",
+			"run_checks",
+			"train_labels___0_means_unlabelled__minus_1_means_excluded",
+			"bool_train_labelled_initially",
+			"int_train_orig_labels",
+			"bool_train_orig_labels",
+			"self.orig_labels",
+			"self.bool_verbose",
+			"False",
+			"		def initialize_all_attribute_variables():",
+			"len",
+			"m_t",
+			"CHECK",
+			"bool",
+			"bool_train_labelled",
+			"1",
+			"bool_train_labelled",
+			"edict confidenc"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "smoothing.py",
+					"settings":
+					{
+						"buffer_size": 6250,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5371,
+								5371
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1790.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/Willem/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+					"settings":
+					{
+						"buffer_size": 868,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								359,
+								359
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"output.exec":
+	{
+		"height": 130.0
+	},
+	"output.find_results":
+	{
+		"height": 130.0
+	},
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"sm",
+				"smoothing.py"
+			],
+			[
+				"ru",
+				"run_perceptron_2014_02_16.py"
+			],
+			[
+				"",
+				"/C/Users/Willem/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings"
+			],
+			[
+				"cl",
+				"classifier.py"
+			],
+			[
+				"s",
+				"semi_supervised_learner.py"
+			],
+			[
+				"8",
+				"8	Close group"
+			],
+			[
+				"got",
+				"13	Goto any class or function definition in the pr"
+			],
+			[
+				"p",
+				"project1.sublime-project"
+			],
+			[
+				"mi",
+				"misc.py"
+			],
+			[
+				"u",
+				"untitled"
+			],
+			[
+				"su",
+				"semi_supervised_learner.py"
+			],
+			[
+				"r",
+				"run_perceptron_2014_02_16.py"
+			],
+			[
+				"d",
+				"data_manager.py"
+			],
+			[
+				"c",
+				"classifier.py"
+			],
+			[
+				"dm",
+				"data_manager.py"
+			],
+			[
+				"se",
+				"semi_supervised_learner.py"
+			],
+			[
+				"da",
+				"data_manager.py"
+			],
+			[
+				"f",
+				"Find Results"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 210.0,
+	"status_bar_visible": true
+}
