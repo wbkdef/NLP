@@ -3,7 +3,9 @@ from nltk.corpus import brown
 from nltk.probability import *
 from itertools import islice
 from math import pow, exp
+import numpy
 from numpy import log2
+
 
 _NINF = float('-1e300') # log probability value for log2(0.0) = Inf
 
@@ -64,7 +66,7 @@ def compute_perplexity_interpolated(bigramProb, unigramProb, uniformProb,lambda_
     def log2_prob(prob):
         if prob > 0.0:
                 logprobBi = log2(prob)
-            else:
+        else:
                 logprobBi = _NINF
     for sent in tagged_sents:
         bigrams = zip(p+sent, sent+p)
@@ -97,14 +99,6 @@ def usage(args):
     Do not type in the single quotes at the command line.
     """
     sys.exit(2)
-
-class probDist(probDistI):
-    def __init__(self,*probDists):
-        self.pd={}
-        keys=set()
-        for pd in probDists:
-            keys|=set(pd.)
-        for key in keys
 
 if __name__ == '__main__':
     SETUP=True
