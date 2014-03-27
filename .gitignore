@@ -2,3 +2,5 @@
 brown_output
 *.sublime-project
 *.sublime-workspace
+*brown_output
+*.swp

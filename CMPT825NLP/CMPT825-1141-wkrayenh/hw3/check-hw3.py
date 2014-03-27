@@ -90,7 +90,7 @@ checks = {
 #    "emailextract": { 'stdout': diff_almost_exact },
 #    "browntags": { 'stdout': diff_almost_exact },
 #    "freqnp": { 'stdout': diff_almost_exact },
-    "brown_tagger": { 'stdout': diff_report_scores },
+#    "brown_tagger": { 'stdout': diff_report_scores },
     "smoothing": { 'stdout': diff_report_scores },
 #    "hmm_decipher": { 'file_check': ["hmmplot.png", os.path.exists] },
 }
