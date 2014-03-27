@@ -82,6 +82,7 @@ class Pcfg:
             print >>sys.stderr, "#reading grammar file:", file
             linenum = 0
             for line in open(file, 'r'):
+                lo=line
                 line = line[:-1] # remove newline
                 linenum += 1
                 if line.find('#') != -1:
@@ -95,6 +96,8 @@ class Pcfg:
                     raise ValueError("Error: more than two symbols in right hand side at line %d: %s" % (linenum, ' '.join(f)))
                 if len(f) < 3:
                     # empty rules not allowed
+                    print "lo", lo
+                    print "line", line
                     raise ValueError("Error: unexpected line at line %d: %s" % (linenum, ' '.join(f)))
                 # count lhs left [right]
                 (count,lhs,left) = (int(f[0]), f[1], f[2])
