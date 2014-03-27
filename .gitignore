@@ -1,3 +1,4 @@
 *.pyc
 brown_output
-
+*.sublime-project
+*.sublime-workspace
